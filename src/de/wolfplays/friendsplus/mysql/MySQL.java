@@ -20,8 +20,7 @@ public class MySQL {
 	private static String host;
 	private static String port;
 	private static String database;
-	
-	public static String TABEL_BANNEDPLAYERS = "BannedPlayers";
+	private static String tabelqry;
 	
 	private static Connection con;
 	
@@ -69,9 +68,8 @@ public class MySQL {
 				public void run() {
 					try {
 						{
-							String qry = "CREATE TABLE IF NOT EXISTS "+ MySQL.TABEL_BANNEDPLAYERS +" (id INT auto_increment, playername TEXT, uuid TEXT, end TEXT, reason TEXT, PRIMARY KEY(id))";
 							PreparedStatement stmt;
-							stmt = con.prepareStatement(qry);
+							stmt = con.prepareStatement(tabelqry);
 							stmt.executeUpdate();
 							stmt.close();
 						}
@@ -121,6 +119,14 @@ public class MySQL {
 
 	public static void setDatabase(String database) {
 		MySQL.database = database;
+	}
+
+	public static String getTabelqry() {
+		return tabelqry;
+	}
+
+	public static void setTabelqry(String tabelqry) {
+		MySQL.tabelqry = tabelqry;
 	}
 
 	public static Connection getConnection() {
