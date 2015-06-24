@@ -48,8 +48,4 @@ public class FriendsPlus extends JavaPlugin {
 		return logger;
 	}
 	
-	public static RegisterManager<FriendsPlus> getRegisterManager() {
-		return register;
-	}
-	
 }
